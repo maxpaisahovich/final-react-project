@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import cardsService from "../services/cardService";
 
 const DeleteCard = () => {
@@ -9,6 +10,7 @@ const DeleteCard = () => {
   useEffect(() => {
     const deleteCard = async () => {
       await cardsService.deleteCard(id);
+      toast("Card was deleted");
       navigate("/my-business-cards");
     };
 
