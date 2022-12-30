@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/auth.context";
+import { useUserInfo } from "../hooks/useUserInfo";
 
 const NavBar = () => {
   const { user } = useAuth();
+  const userInfo = useUserInfo();
 
   return (
     <>
@@ -44,6 +46,11 @@ const NavBar = () => {
             <ul className="navbar-nav ms-auto mb-2 mb-sm-0">
               {user ? (
                 <>
+                  <li className="nav-item">
+                    <NavLink to="/" className="nav-link">
+                      {userInfo.name}
+                    </NavLink>
+                  </li>
                   <li className="nav-item">
                     <NavLink to="sign-out" className="nav-link">
                       Sign Out
